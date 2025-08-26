@@ -410,3 +410,26 @@
         padding: 6px 12px;
     }
 }
+
+.musicPrompt {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.musicButton {
+    background: linear-gradient(45deg, #ff6b35, #f7931e);
+    border: none;
+    padding: 10px 15px;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.musicButton:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(247, 147, 30, 0.6);
+}

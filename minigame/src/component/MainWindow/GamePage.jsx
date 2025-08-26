@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import styles from './GamePage.module.css';
 
+// Импортируем аудиофайл (убедитесь, что файл находится в правильной папке)
+import mainTheme from './asset/mainTheme.mp3';
+
 const GRID_SIZE = 10;
 const CELL_SIZE = 50;
 const INITIAL_ENEMY_SPEED = 800; // ms
@@ -30,16 +33,44 @@ const GamePage = ({ onBackToWelcome }) => {
         s: false,
         d: false
     });
+    const [musicStarted, setMusicStarted] = useState(false);
+    const [audioError, setAudioError] = useState(false);
 
     // Используем useRef для получения актуальной позиции игрока
     const playerPosRef = useRef(playerPos);
     const isHiddenRef = useRef(isHidden);
+    const audioRef = useRef(null);
 
     // Обновляем ref при изменении состояния
     useEffect(() => {
         playerPosRef.current = playerPos;
         isHiddenRef.current = isHidden;
     }, [playerPos, isHidden]);
+
+    // Запуск музыки при первом движении игрока
+    useEffect(() => {
+        if (!musicStarted && !audioError && (keysPressed.w || keysPressed.a || keysPressed.s || keysPressed.d)) {
+            startMusic();
+        }
+    }, [keysPressed, musicStarted, audioError]);
+
+    const startMusic = useCallback(() => {
+        if (audioRef.current && !musicStarted && !audioError) {
+            // Предзагрузка аудио
+            audioRef.current.preload = 'auto';
+            audioRef.current.load(); // Принудительная загрузка
+
+            audioRef.current.play()
+                .then(() => {
+                    setMusicStarted(true);
+                    console.log('Music started successfully');
+                })
+                .catch(error => {
+                    console.error('Error playing audio:', error);
+                    setAudioError(true);
+                });
+        }
+    }, [musicStarted, audioError]);
 
     // Generate random position
     const getRandomPosition = useCallback(() => {
@@ -286,6 +317,13 @@ const GamePage = ({ onBackToWelcome }) => {
         setMoveCooldown(false);
         setHideTimer(0);
         setKeysPressed({ w: false, a: false, s: false, d: false });
+        setMusicStarted(false);
+        setAudioError(false);
+
+        if (audioRef.current) {
+            audioRef.current.currentTime = 0;
+            audioRef.current.load(); // Перезагружаем аудио
+        }
     };
 
     // Format time
@@ -318,6 +356,13 @@ const GamePage = ({ onBackToWelcome }) => {
 
     return (
         <div className={styles.container}>
+            {/* Используем импортированный аудиофайл */}
+            <audio
+                ref={audioRef}
+                src={mainTheme}
+                loop
+                preload="auto"
+            />
             <div className={styles.header}>
                 <button className={styles.backButton} onClick={onBackToWelcome}>
                     ← Назад
