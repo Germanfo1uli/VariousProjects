@@ -400,7 +400,7 @@ const AssetPage = () => {
                     </div>
                 </div>
                 <div className={styles.footerBottom}>
-                    <p>&copy; 2024 Playvixor. Все права защищены.</p>
+                    <p>&copy; 2025 Playvixor. Все права защищены.</p>
                 </div>
             </footer>
         </div>

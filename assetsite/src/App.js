@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import GamePage from './components/gamePage/gamePage';
 import AssetPage from './components/assetPage/AssetPage';
+import LeaderboardPage from "./components/leaderboardPage/LeaderboardPage";
 
 function App() {
     return (
@@ -10,9 +11,14 @@ function App() {
                 <Route path="/" element={<GamePage />} />
                 <Route path="/games" element={<GamePage />} />
                 <Route path="/assets" element={<AssetPage />} />
+                <Route path="/leaderboard" element={<LeaderboardPage />} />
             </Routes>
         </Router>
     );
 }
 
 export default App;
+
+
+
+//я устал босс
