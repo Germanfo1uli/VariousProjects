@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { FaGamepad, FaUser, FaCube, FaTrophy, FaHeart, FaComment, FaEye, FaSearch, FaSort, FaSortUp, FaSortDown, FaDownload } from 'react-icons/fa';
+import { FaGamepad, FaUser, FaCube, FaTrophy, FaHeart, FaComment, FaEye, FaSearch, FaSort, FaSortUp, FaSortDown } from 'react-icons/fa';
 import { useNavigate, useLocation } from 'react-router-dom';
-import styles from './AssetPage.module.css';
+import styles from './gamePage.module.css';
 
-const AssetPage = () => {
+const GamePage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState('');
     const [sortBy, setSortBy] = useState('popularity');
@@ -14,14 +14,14 @@ const AssetPage = () => {
 
     const getActiveMenu = () => {
         switch (location.pathname) {
-            case '/games':
-                return 'games';
+            case '/assets':
+                return 'assets';
             case '/leaderboard':
                 return 'leaderboard';
             case '/account':
                 return 'account';
             default:
-                return 'assets';
+                return 'games';
         }
     };
 
@@ -30,123 +30,81 @@ const AssetPage = () => {
     const mockAssets = [
         {
             id: 1,
-            title: "Medieval Castle Pack",
+            title: "Fantasy Adventure",
+            image: "https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?w=300&h=200&fit=crop",
+            description: "Увлекательная RPG игра в фэнтезийном мире с богатой историей",
+            tags: ["RPG", "Fantasy", "Adventure"],
+            author: "JohnDev",
+            likes: 142,
+            comments: 23,
+            views: 1567,
+            date: "2024-03-15",
+            price: "$9.99"
+        },
+        {
+            id: 2,
+            title: "Space Shooter",
+            image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=300&h=200&fit=crop",
+            description: "Динамичный шутер в космическом пространстве с улучшениями корабля",
+            tags: ["Shooter", "Space", "Action"],
+            author: "SpaceCreator",
+            likes: 89,
+            comments: 15,
+            views: 987,
+            date: "2024-03-20",
+            price: "$4.99"
+        },
+        {
+            id: 3,
+            title: "Medieval Castle",
             image: "https://images.unsplash.com/photo-1589656966895-2f33e7653819?w=300&h=200&fit=crop",
-            description: "Детализированный набор ассетов средневекового замка с текстурами высокого разрешения",
-            tags: ["Medieval", "Environment", "3D", "Buildings"],
+            description: "Детализированный набор ассетов средневекового замка",
+            tags: ["Medieval", "Environment", "3D"],
             author: "AssetMaster",
             likes: 204,
             comments: 31,
             views: 2345,
-            downloads: 892,
             date: "2024-02-10",
-            price: "Free",
-            category: "Environment"
+            price: "Free"
         },
         {
-            id: 2,
-            title: "Pixel Art UI Pack",
+            id: 4,
+            title: "Pixel Art Pack",
             image: "https://images.unsplash.com/photo-1614294149710-32eec425a251?w=300&h=200&fit=crop",
-            description: "Коллекция пиксель-арт спрайтов для 2D игр: кнопки, иконки, интерфейсы",
-            tags: ["2D", "Pixel", "UI", "Icons"],
+            description: "Коллекция пиксель-арт спрайтов для 2D игр",
+            tags: ["2D", "Pixel", "Art"],
             author: "PixelArtist",
             likes: 176,
             comments: 28,
             views: 1890,
-            downloads: 745,
             date: "2024-03-05",
-            price: "$4.99",
-            category: "UI"
-        },
-        {
-            id: 3,
-            title: "Sci-Fi Weapons Pack",
-            image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=300&h=200&fit=crop",
-            description: "Набор футуристического оружия с анимациями и эффектами",
-            tags: ["Weapons", "Sci-Fi", "FX", "Animations"],
-            author: "SciFiCreator",
-            likes: 158,
-            comments: 22,
-            views: 1678,
-            downloads: 632,
-            date: "2024-01-15",
-            price: "$7.99",
-            category: "Weapons"
-        },
-        {
-            id: 4,
-            title: "Fantasy Character Pack",
-            image: "https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?w=300&h=200&fit=crop",
-            description: "Набор из 10 фэнтезийных персонажей с ригами и анимациями",
-            tags: ["Characters", "Fantasy", "Rigged", "Animations"],
-            author: "CharacterDesigner",
-            likes: 287,
-            comments: 42,
-            views: 3120,
-            downloads: 1056,
-            date: "2024-03-12",
-            price: "$12.99",
-            category: "Characters"
+            price: "$5.99"
         },
         {
             id: 5,
-            title: "Nature Environment Pack",
+            title: "Survival Island",
             image: "https://images.unsplash.com/photo-1551632811-561732d1e306?w=300&h=200&fit=crop",
-            description: "Реалистичные деревья, растения и ландшафтные элементы",
-            tags: ["Nature", "Environment", "Plants", "Landscape"],
-            author: "NatureArtist",
-            likes: 192,
-            comments: 25,
-            views: 1987,
-            downloads: 823,
-            date: "2024-02-28",
-            price: "$9.99",
-            category: "Environment"
+            description: "Выживайте на таинственном острове полном опасностей и загадок",
+            tags: ["Survival", "Open World", "Crafting"],
+            author: "IslandDev",
+            likes: 95,
+            comments: 18,
+            views: 1123,
+            date: "2024-03-25",
+            price: "$7.99"
         },
         {
             id: 6,
-            title: "Vehicle Pack",
-            image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=300&h=200&fit=crop",
-            description: "Коллекция современных и футуристических транспортных средств",
-            tags: ["Vehicles", "Cars", "Sci-Fi", "Transport"],
-            author: "VehicleDesigner",
-            likes: 134,
-            comments: 19,
-            views: 1567,
-            downloads: 587,
-            date: "2024-03-18",
-            price: "$8.99",
-            category: "Vehicles"
-        },
-        {
-            id: 7,
-            title: "Sound Effects Library",
-            image: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=300&h=200&fit=crop",
-            description: "Библиотека из 200+ звуковых эффектов для игр",
-            tags: ["Audio", "SFX", "Sounds", "Library"],
-            author: "SoundDesigner",
-            likes: 98,
-            comments: 14,
-            views: 1234,
-            downloads: 672,
-            date: "2024-03-08",
-            price: "$5.99",
-            category: "Audio"
-        },
-        {
-            id: 8,
-            title: "Modular Sci-Fi Interior",
-            image: "https://images.unsplash.com/photo-1464983953574-0892a716854b?w=300&h=200&fit=crop",
-            description: "Модульные элементы для создания футуристических интерьеров",
-            tags: ["Sci-Fi", "Interior", "Modular", "Environment"],
-            author: "InteriorDesigner",
-            likes: 176,
-            comments: 23,
-            views: 1876,
-            downloads: 734,
-            date: "2024-02-15",
-            price: "$10.99",
-            category: "Environment"
+            title: "Sci-Fi UI Kit",
+            image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=300&h=200&fit=crop",
+            description: "Современный набор UI элементов в научно-фантастическом стиле",
+            tags: ["UI", "Sci-Fi", "Design"],
+            author: "UIDesigner",
+            likes: 158,
+            comments: 22,
+            views: 1678,
+            date: "2024-01-15",
+            price: "$6.99"
         }
     ];
 
@@ -165,18 +123,14 @@ const AssetPage = () => {
                 valueA = a.views;
                 valueB = b.views;
                 break;
-            case 'downloads':
-                valueA = a.downloads;
-                valueB = b.downloads;
-                break;
             case 'date':
                 valueA = new Date(a.date);
                 valueB = new Date(b.date);
                 break;
             case 'popularity':
             default:
-                valueA = a.likes + a.comments + a.views / 10 + a.downloads;
-                valueB = b.likes + b.comments + b.views / 10 + b.downloads;
+                valueA = a.likes + a.comments + a.views / 10;
+                valueB = b.likes + b.comments + b.views / 10;
                 break;
         }
         return sortOrder === 'asc' ? valueA - valueB : valueB - valueA;
@@ -234,7 +188,7 @@ const AssetPage = () => {
                         <FaSearch className={styles.searchIcon} />
                         <input
                             type="text"
-                            placeholder="Поиск ассетов..."
+                            placeholder="Поиск игр и ассетов..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                         />
@@ -278,7 +232,9 @@ const AssetPage = () => {
             </header>
             <main className={styles.main}>
                 <div className={styles.pageHeader}>
-                    <h1 className={styles.pageTitle}>Лучшие ассеты</h1>
+                    <h1 className={styles.pageTitle}>
+                        {activeMenu === 'games' ? 'Популярные игры' : 'Лучшие ассеты'}
+                    </h1>
                     <div className={styles.sortOptions}>
                         <span>Сортировать по:</span>
                         <button
@@ -289,18 +245,25 @@ const AssetPage = () => {
                             <SortIcon field="popularity" />
                         </button>
                         <button
-                            className={`${styles.sortOption} ${sortBy === 'downloads' ? styles.active : ''}`}
-                            onClick={() => handleSortChange('downloads')}
-                        >
-                            Загрузкам
-                            <SortIcon field="downloads" />
-                        </button>
-                        <button
                             className={`${styles.sortOption} ${sortBy === 'likes' ? styles.active : ''}`}
                             onClick={() => handleSortChange('likes')}
                         >
                             Лайкам
                             <SortIcon field="likes" />
+                        </button>
+                        <button
+                            className={`${styles.sortOption} ${sortBy === 'views' ? styles.active : ''}`}
+                            onClick={() => handleSortChange('views')}
+                        >
+                            Просмотрам
+                            <SortIcon field="views" />
+                        </button>
+                        <button
+                            className={`${styles.sortOption} ${sortBy === 'comments' ? styles.active : ''}`}
+                            onClick={() => handleSortChange('comments')}
+                        >
+                            Комментариям
+                            <SortIcon field="comments" />
                         </button>
                         <button
                             className={`${styles.sortOption} ${sortBy === 'date' ? styles.active : ''}`}
@@ -317,10 +280,9 @@ const AssetPage = () => {
                             <div className={styles.cardImage}>
                                 <img src={asset.image} alt={asset.title} />
                                 <div className={styles.cardOverlay}>
-                                    <button className={styles.viewButton}>Подробнее</button>
+                                    <button className={styles.viewButton}>Смотреть</button>
                                 </div>
                                 <div className={styles.priceTag}>{asset.price}</div>
-                                <div className={styles.categoryBadge}>{asset.category}</div>
                             </div>
                             <div className={styles.cardContent}>
                                 <h3 className={styles.cardTitle}>{asset.title}</h3>
@@ -346,10 +308,6 @@ const AssetPage = () => {
                                     <div className={styles.stat}>
                                         <FaEye className={styles.statIcon} />
                                         <span>{asset.views}</span>
-                                    </div>
-                                    <div className={styles.stat}>
-                                        <FaDownload className={styles.statIcon} />
-                                        <span>{asset.downloads}</span>
                                     </div>
                                 </div>
                             </div>
@@ -400,11 +358,11 @@ const AssetPage = () => {
                     </div>
                 </div>
                 <div className={styles.footerBottom}>
-                    <p>&copy; 2024 Playvixor. Все права защищены.</p>
+                    <p>&copy; 2025 Playvixor. Все права защищены.</p>
                 </div>
             </footer>
         </div>
     );
 };
 
-export default AssetPage;
+export default GamePage;

@@ -1,13 +1,18 @@
 import React from 'react';
-import AssetPage from '../src/components/assetPage/AssetPage';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import GamePage from './components/gamePage/gamePage';
+import AssetPage from './components/assetPage/AssetPage';
 
 function App() {
-  return (
-      <div className="App">
-        <AssetPage />
-      </div>
-  );
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<GamePage />} />
+                <Route path="/games" element={<GamePage />} />
+                <Route path="/assets" element={<AssetPage />} />
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;
