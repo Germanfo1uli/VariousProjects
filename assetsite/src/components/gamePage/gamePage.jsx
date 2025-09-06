@@ -188,7 +188,7 @@ const GamePage = () => {
                         <FaSearch className={styles.searchIcon} />
                         <input
                             type="text"
-                            placeholder="Поиск игр и ассетов..."
+                            placeholder="Поиск игр..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                         />
