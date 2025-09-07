@@ -31,9 +31,9 @@ const NavigationBar = ({ activeTab, onTabChange }) => {
                             <FaFire className={styles.navIcon} /> ЗАКЛИНАНИЯ
                         </Link>
                         <Link
-                            to="/artifacts"
-                            className={`${styles.ancientLink} ${activeTab === 'artifacts' ? styles.active : ''}`}
-                            onClick={() => onTabChange('artifacts')}
+                            to="/artefact"
+                            className={`${styles.ancientLink} ${activeTab === 'artefact' ? styles.active : ''}`}
+                            onClick={() => onTabChange('artefact')}
                         >
                             <FaBook className={styles.navIcon} /> АРТЕФАКТЫ
                         </Link>
