@@ -4,6 +4,7 @@ import MainPage from './components/mainPage/MainPage';
 import CreaturesPage from './components/creaturesPage/CreaturesPage';
 import ArtefactPage from "./components/artefactPage/ArtefactPage";
 import ContactPage from "./components/contactPage/ContactPage";
+import SpellsPage from "./components/spellsPage/SpellsPage";
 
 const App = () => {
     return (
@@ -14,6 +15,7 @@ const App = () => {
                     <Route path="/creatures" element={<CreaturesPage />} />
                     <Route path="/artefact" element={<ArtefactPage />} />
                     <Route path="/contact" element={<ContactPage />} />
+                    <Route path="/spells" element={<SpellsPage />} />
                 </Routes>
             </div>
         </Router>

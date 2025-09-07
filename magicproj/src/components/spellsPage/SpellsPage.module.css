@@ -1,0 +1,766 @@
+.container {
+    min-height: 100vh;
+    background:
+            linear-gradient(135deg, #0c0804 0%, #1a1208 50%, #0f0a03 100%),
+            url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.03"><rect width="100" height="100" fill="%23000" /><path d="M0,0 L100,100 M100,0 L0,100" stroke="%238b5a2b" stroke-width="1" opacity="0.2"/></svg>');
+    color: #e0d0b8;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Cinzel', 'Times New Roman', serif;
+}
+
+.mainContent {
+    padding: 2rem;
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 80vh;
+}
+
+.pageHeader {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: rgba(40, 25, 10, 0.7);
+    border: 2px solid #8b5a2b;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    max-width: 800px;
+    width: 100%;
+}
+
+.pageTitle {
+    color: #ffd700;
+    font-size: 2.8rem;
+    margin: 0 0 0.5rem 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    letter-spacing: 2px;
+}
+
+.pageSubtitle {
+    color: #c8a971;
+    font-size: 1.3rem;
+    margin: 0;
+    font-style: italic;
+}
+
+.scrollsContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.scrollWrapper {
+    transition: all 0.5s ease;
+}
+
+.scrollWrapper.expanded {
+    grid-column: 1 / -1;
+}
+
+.scroll {
+    background:
+            linear-gradient(135deg, rgba(235, 225, 205, 0.95) 0%, rgba(220, 205, 180, 0.95) 100%),
+            url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.08"><rect width="100" height="100" fill="none" stroke="%238b5a2b" stroke-width="1" stroke-opacity="0.3"/></svg>'),
+            url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"></feTurbulence></filter><rect width="100" height="100" filter="url(#grain)"></rect></svg>');
+    border: 2px solid #8b5a2b;
+    border-radius: 8px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow:
+            0 5px 20px rgba(0, 0, 0, 0.3),
+            inset 0 0 30px rgba(139, 90, 43, 0.1);
+    position: relative;
+    overflow: hidden;
+    color: #4a3c2a;
+    transform-style: preserve-3d;
+}
+
+.scroll::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+            linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+.scroll::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 1px solid rgba(139, 90, 43, 0.2);
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.scroll:hover {
+    transform: translateY(-5px) rotate(1deg);
+    box-shadow:
+            0 10px 30px rgba(0, 0, 0, 0.4),
+            inset 0 0 40px rgba(139, 90, 43, 0.2);
+}
+
+.scrollTopEdge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: var(--element-color);
+    z-index: 2;
+}
+
+.scrollBottomEdge {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: var(--element-color);
+    z-index: 2;
+}
+
+.scrollHeader {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-top: 0.5rem;
+    z-index: 2;
+}
+
+.elementIcon {
+    font-size: 3rem;
+    color: var(--element-color);
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4));
+    background: rgba(255, 255, 255, 0.7);
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 auto 1rem auto;
+    border: 2px solid var(--element-color);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.elementName {
+    color: var(--element-color);
+    font-size: 1.8rem;
+    margin: 0 0 0.5rem 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.elementDescription {
+    color: #6b4423;
+    font-size: 1rem;
+    margin: 0;
+    font-style: italic;
+    background: rgba(255, 255, 255, 0.4);
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    display: inline-block;
+}
+
+.scrollAging {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+            radial-gradient(circle at 20% 30%, rgba(139, 90, 43, 0.1) 0%, transparent 20%),
+            radial-gradient(circle at 80% 70%, rgba(139, 90, 43, 0.1) 0%, transparent 20%),
+            radial-gradient(circle at 40% 80%, rgba(139, 90, 43, 0.1) 0%, transparent 20%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.scrollSeal {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+    background: var(--seal-color, #8b5a2b);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    z-index: 10;
+}
+
+.scrollSeal::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+}
+
+.spellsList {
+    border-top: 2px dashed #8b5a2b;
+    padding-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.spellsTitle {
+    color: var(--element-color);
+    font-size: 1.3rem;
+    margin: 0 0 1rem 0;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.5);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.spellItem {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #c8a971;
+    border-radius: 6px;
+    margin-bottom: 0.8rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.spellItem:hover {
+    background: rgba(255, 255, 255, 0.95);
+    transform: translateX(5px);
+    border-color: var(--element-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.spellIcon {
+    font-size: 1.5rem;
+    color: var(--element-color);
+    margin-right: 1rem;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    border: 1px solid var(--element-color);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.spellInfo {
+    flex: 1;
+}
+
+.spellName {
+    color: #3d2815;
+    font-size: 1.1rem;
+    margin: 0 0 0.3rem 0;
+    font-weight: bold;
+}
+
+.spellLevel {
+    color: #8b5a2b;
+    font-size: 0.8rem;
+    font-style: italic;
+}
+
+.spellMana {
+    background: var(--element-color);
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.scrollFooter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8b5a2b;
+    font-size: 0.9rem;
+    padding-top: 1rem;
+    border-top: 1px solid #c8a971;
+    position: relative;
+    z-index: 2;
+}
+
+.scrollIcon {
+    margin-right: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.scrollCorner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    z-index: 3;
+}
+
+.scrollCornerTL {
+    top: 0;
+    left: 0;
+    border-top: 2px solid var(--element-color);
+    border-left: 2px solid var(--element-color);
+    border-top-left-radius: 8px;
+}
+
+.scrollCornerTR {
+    top: 0;
+    right: 0;
+    border-top: 2px solid var(--element-color);
+    border-right: 2px solid var(--element-color);
+    border-top-right-radius: 8px;
+}
+
+.scrollCornerBL {
+    bottom: 0;
+    left: 0;
+    border-bottom: 2px solid var(--element-color);
+    border-left: 2px solid var(--element-color);
+    border-bottom-left-radius: 8px;
+}
+
+.scrollCornerBR {
+    bottom: 0;
+    right: 0;
+    border-bottom: 2px solid var(--element-color);
+    border-right: 2px solid var(--element-color);
+    border-bottom-right-radius: 8px;
+}
+
+.scrollTornEdge {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background:
+            linear-gradient(90deg,
+            transparent 0%,
+            var(--element-color) 10%,
+            var(--element-color) 90%,
+            transparent 100%);
+    background-size: 20px 3px;
+    background-repeat: repeat-x;
+    opacity: 0.6;
+    z-index: 3;
+}
+
+.scrollTornEdgeTop {
+    top: -1px;
+}
+
+.scrollTornEdgeBottom {
+    bottom: -1px;
+}
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 2rem;
+}
+
+.modalContent {
+    background:
+            linear-gradient(135deg, #2b1b0f 0%, #3d2815 100%),
+            url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.05"><rect width="100" height="100" fill="none" stroke="%238b5a2b" stroke-width="2"/></svg>');
+    border: 3px solid #8b5a2b;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow:
+            0 10px 40px rgba(0, 0, 0, 0.8),
+            0 0 30px rgba(139, 90, 43, 0.5);
+    color: #e0d0b8;
+}
+
+.modalContent::-webkit-scrollbar {
+    width: 10px;
+}
+
+.modalContent::-webkit-scrollbar-track {
+    background: rgba(40, 25, 10, 0.3);
+    border-radius: 5px;
+}
+
+.modalContent::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #8b5a2b 0%, #6b4423 100%);
+    border: 1px solid #3d2815;
+    border-radius: 5px;
+}
+
+.closeButton {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #8b5a2b;
+    color: #ffd700;
+    border: 2px solid #c8a971;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.closeButton:hover {
+    background: #9b6b3b;
+    color: #fff;
+    border-color: #ffd700;
+    transform: scale(1.1);
+}
+
+.modalHeader {
+    text-align: center;
+    padding: 2rem 2rem 1.5rem;
+    border-bottom: 3px double #8b5a2b;
+    position: relative;
+}
+
+.modalHeader::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 30%;
+    right: 30%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #c8a971, transparent);
+}
+
+.spellIconLarge {
+    font-size: 3.5rem;
+    color: #ffd700;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.modalTitle {
+    color: #ffd700;
+    font-size: 2rem;
+    margin: 0 0 0.5rem 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.spellLevelBadge {
+    display: inline-block;
+    background: linear-gradient(135deg, #8b5a2b 0%, #6b4423 100%);
+    color: #ffd700;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: 1px solid #c8a971;
+    margin-right: 0.5rem;
+}
+
+.spellManaCost {
+    display: inline-block;
+    color: #81d4fa;
+    font-weight: bold;
+}
+
+.modalBody {
+    padding: 2rem;
+}
+
+.infoSection {
+    margin-bottom: 1.8rem;
+}
+
+.infoSection h3 {
+    color: #ffd700;
+    margin: 0 0 0.8rem 0;
+    font-size: 1.2rem;
+    border-bottom: 2px solid #8b5a2b;
+    padding-bottom: 0.5rem;
+}
+
+.infoSection p {
+    color: #c8a971;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.spellDetails {
+    background: rgba(40, 25, 10, 0.3);
+    padding: 1.2rem;
+    border-radius: 8px;
+    border: 1px solid #8b5a2b;
+}
+
+.detailItem {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px dashed #8b5a2b;
+}
+
+.detailItem:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.detailLabel {
+    color: #c8a971;
+    font-weight: bold;
+}
+
+.detailValue {
+    color: #ffd700;
+}
+
+.modalFooter {
+    padding: 1.5rem 2rem;
+    text-align: center;
+    border-top: 3px double #8b5a2b;
+}
+
+.learnButton {
+    background: linear-gradient(135deg, #8b5a2b 0%, #6b4423 100%);
+    color: #ffd700;
+    border: 2px solid #c8a971;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Cinzel', 'Times New Roman', serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.learnButton:hover {
+    background: linear-gradient(135deg, #9b6b3b 0%, #7b5433 100%);
+    color: #fff;
+    border-color: #ffd700;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.backgroundElements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.floatingRunes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.rune {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: rgba(200, 169, 113, 0.1);
+    border: 1px solid rgba(139, 90, 43, 0.3);
+    border-radius: 5px;
+    animation: floatRune 15s infinite linear;
+}
+
+.rune:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
+.rune:nth-child(2) { top: 25%; right: 15%; animation-delay: -2s; }
+.rune:nth-child(3) { top: 60%; left: 20%; animation-delay: -4s; }
+.rune:nth-child(4) { top: 45%; right: 10%; animation-delay: -6s; }
+.rune:nth-child(5) { top: 75%; left: 15%; animation-delay: -8s; }
+.rune:nth-child(6) { top: 35%; right: 25%; animation-delay: -10s; }
+.rune:nth-child(7) { top: 55%; left: 8%; animation-delay: -12s; }
+.rune:nth-child(8) { top: 80%; right: 20%; animation-delay: -14s; }
+
+@keyframes floatRune {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.3;
+    }
+    25% {
+        transform: translateY(-15px) rotate(90deg);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translateY(0) rotate(180deg);
+        opacity: 0.7;
+    }
+    75% {
+        transform: translateY(15px) rotate(270deg);
+        opacity: 0.5;
+    }
+}
+
+.magicParticles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+            radial-gradient(circle at 20% 30%, rgba(200, 169, 113, 0.05) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(139, 90, 43, 0.05) 0%, transparent 50%);
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .scrollsContainer {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .mainContent {
+        padding: 1rem;
+    }
+
+    .pageTitle {
+        font-size: 2.2rem;
+    }
+
+    .pageSubtitle {
+        font-size: 1.1rem;
+    }
+
+    .scroll {
+        padding: 1.2rem;
+    }
+
+    .elementIcon {
+        font-size: 2.5rem;
+    }
+
+    .elementName {
+        font-size: 1.5rem;
+    }
+
+    .modalContent {
+        margin: 1rem;
+    }
+
+    .modalHeader {
+        padding: 1.5rem 1.5rem 1rem;
+    }
+
+    .spellIconLarge {
+        font-size: 3rem;
+    }
+
+    .modalTitle {
+        font-size: 1.7rem;
+    }
+
+    .modalBody {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .pageTitle {
+        font-size: 1.8rem;
+    }
+
+    .elementIcon {
+        font-size: 2rem;
+    }
+
+    .elementName {
+        font-size: 1.3rem;
+    }
+
+    .spellItem {
+        padding: 0.8rem;
+    }
+
+    .spellIcon {
+        font-size: 1.3rem;
+        margin-right: 0.8rem;
+    }
+
+    .spellName {
+        font-size: 1rem;
+    }
+
+    .modalHeader {
+        padding: 1.2rem 1.2rem 0.8rem;
+    }
+
+    .spellIconLarge {
+        font-size: 2.5rem;
+    }
+
+    .modalTitle {
+        font-size: 1.5rem;
+    }
+
+    .modalBody {
+        padding: 1.2rem;
+    }
+
+    .infoSection h3 {
+        font-size: 1.1rem;
+    }
+
+    .learnButton {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+}
