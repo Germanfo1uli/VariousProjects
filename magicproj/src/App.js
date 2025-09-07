@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainPage from './components/mainPage/MainPage';
 import CreaturesPage from './components/creaturesPage/CreaturesPage';
-import ArtefactPage from "./artefactPage/ArtefactPage";
-import ContactPage from "./contactPage/ContactPage";
+import ArtefactPage from "./components/artefactPage/ArtefactPage";
+import ContactPage from "./components/contactPage/ContactPage";
 
 const App = () => {
     return (

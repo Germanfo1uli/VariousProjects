@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaGithub, FaTelegram, FaEnvelope, FaLinkedin, FaCode, FaMagic, FaHeart } from 'react-icons/fa';
-import NavigationBar from '../components/MoreComponents/NavigationBar';
-import Footer from "../components/MoreComponents/Footer";
+import NavigationBar from '../MoreComponents/NavigationBar';
+import Footer from "../MoreComponents/Footer";
 import styles from './ContactPage.module.css';
 
 

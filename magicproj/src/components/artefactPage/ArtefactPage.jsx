@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaMagic, FaBook, FaEye, FaKey, FaGem, FaScroll, FaRing, FaCrown, FaHatWizard, FaInfoCircle } from 'react-icons/fa';
-import NavigationBar from '../components/MoreComponents/NavigationBar';
-import Footer from "../components/MoreComponents/Footer";
+import NavigationBar from '../MoreComponents/NavigationBar';
+import Footer from "../MoreComponents/Footer";
 import styles from './ArtefactPage.module.css';
 
 const ArtefactPage = () => {
