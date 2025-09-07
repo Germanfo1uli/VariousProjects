@@ -1,1 +1,0 @@
-This repository contains various educational and personal projects. There are works from various fields of programming, including web development, data analysis, console applications, and more. Each folder is a separate project.

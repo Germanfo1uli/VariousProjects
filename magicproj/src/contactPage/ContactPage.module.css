@@ -1,0 +1,512 @@
+.container {
+    min-height: 100vh;
+    background:
+            linear-gradient(135deg, #0c0804 0%, #1a1208 50%, #0f0a03 100%),
+            url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.03"><rect width="100" height="100" fill="%23000" /><path d="M0,0 L100,100 M100,0 L0,100" stroke="%238b5a2b" stroke-width="1" opacity="0.2"/></svg>');
+    color: #e0d0b8;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Cinzel', 'Times New Roman', serif;
+}
+
+.mainContent {
+    padding: 2rem;
+    position: relative;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    min-height: 80vh;
+}
+
+.scrollContainer {
+    width: 100%;
+    max-width: 1200px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.scrollContainer::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scrollContainer::-webkit-scrollbar-track {
+    background: rgba(40, 25, 10, 0.3);
+    border-radius: 4px;
+}
+
+.scrollContainer::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #8b5a2b 0%, #6b4423 100%);
+    border: 1px solid #3d2815;
+    border-radius: 4px;
+}
+
+.pageHeader {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: rgba(40, 25, 10, 0.7);
+    border: 2px solid #8b5a2b;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.pageTitle {
+    color: #ffd700;
+    font-size: 2.8rem;
+    margin: 0 0 0.5rem 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    letter-spacing: 2px;
+}
+
+.pageSubtitle {
+    color: #c8a971;
+    font-size: 1.3rem;
+    margin: 0;
+    font-style: italic;
+}
+
+.contentWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.developerCard {
+    background:
+            linear-gradient(135deg, rgba(43, 27, 15, 0.9) 0%, rgba(61, 40, 21, 0.9) 100%),
+            url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.05"><rect width="100" height="100" fill="none" stroke="%238b5a2b" stroke-width="2"/></svg>');
+    border: 3px solid #8b5a2b;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow:
+            0 10px 30px rgba(0, 0, 0, 0.6),
+            inset 0 0 50px rgba(139, 90, 43, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.developerCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+            radial-gradient(circle at 20% 30%, rgba(200, 169, 113, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(139, 90, 43, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.developerImageContainer {
+    position: relative;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.imageFrame {
+    width: 220px;
+    height: 220px;
+    margin: 0 auto;
+    border: 5px solid #8b5a2b;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    box-shadow:
+            0 0 25px rgba(255, 215, 0, 0.3),
+            inset 0 0 30px rgba(139, 90, 43, 0.5);
+}
+
+.developerImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.imageFrame:hover .developerImage {
+    transform: scale(1.05);
+}
+
+.imageOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(139, 90, 43, 0.2) 0%, rgba(61, 40, 21, 0.4) 100%);
+    border-radius: 50%;
+}
+
+.magicOrb {
+    position: absolute;
+    bottom: 20px;
+    right: 30%;
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle, #ffd700 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(5px);
+    animation: pulse 3s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.7;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+.developerInfo {
+    text-align: center;
+}
+
+.developerName {
+    color: #ffd700;
+    font-size: 2rem;
+    margin: 0 0 0.5rem 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.developerTitle {
+    color: #c8a971;
+    font-size: 1.1rem;
+    margin: 0 0 1.5rem 0;
+    font-style: italic;
+}
+
+.developerDescription {
+    color: #e0d0b8;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.developerDescription p {
+    margin-bottom: 1rem;
+}
+
+.skillsSection {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #8b5a2b;
+}
+
+.skillsTitle {
+    color: #ffd700;
+    font-size: 1.3rem;
+    margin: 0 0 1rem 0;
+}
+
+.skillsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.skillItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(40, 25, 10, 0.5);
+    border-radius: 8px;
+    border: 1px solid #8b5a2b;
+    transition: all 0.3s ease;
+}
+
+.skillItem:hover {
+    background: rgba(50, 30, 15, 0.7);
+    border-color: #c8a971;
+    transform: translateY(-3px);
+}
+
+.skillIcon {
+    color: #ffd700;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.skillItem span {
+    color: #c8a971;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.contactsSection {
+    background:
+            linear-gradient(135deg, rgba(43, 27, 15, 0.9) 0%, rgba(61, 40, 21, 0.9) 100%),
+            url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.05"><rect width="100" height="100" fill="none" stroke="%238b5a2b" stroke-width="2"/></svg>');
+    border: 3px solid #8b5a2b;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow:
+            0 10px 30px rgba(0, 0, 0, 0.6),
+            inset 0 0 50px rgba(139, 90, 43, 0.3);
+}
+
+.contactsTitle {
+    color: #ffd700;
+    font-size: 1.8rem;
+    margin: 0 0 1rem 0;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.contactsDescription {
+    color: #c8a971;
+    text-align: center;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.socialLinks {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.socialLink {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(40, 25, 10, 0.5);
+    border: 2px solid #8b5a2b;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    color: #c8a971;
+}
+
+.socialLink:hover {
+    background: rgba(50, 30, 15, 0.7);
+    border-color: var(--hover-color);
+    transform: translateY(-3px);
+    color: #ffd700;
+}
+
+.socialIcon {
+    font-size: 1.8rem;
+    margin-right: 1rem;
+    color: inherit;
+}
+
+.socialName {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.contactForm {
+    background: rgba(40, 25, 10, 0.3);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 2px solid #8b5a2b;
+}
+
+.formTitle {
+    color: #ffd700;
+    font-size: 1.3rem;
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.formInput,
+.formTextarea {
+    background: rgba(30, 18, 8, 0.7);
+    border: 2px solid #8b5a2b;
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    color: #e0d0b8;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.formInput:focus,
+.formTextarea:focus {
+    outline: none;
+    border-color: #c8a971;
+    box-shadow: 0 0 10px rgba(200, 169, 113, 0.3);
+}
+
+.formInput::placeholder,
+.formTextarea::placeholder {
+    color: #8b5a2b;
+}
+
+.submitButton {
+    background: linear-gradient(135deg, #8b5a2b 0%, #6b4423 100%);
+    color: #ffd700;
+    border: 2px solid #c8a971;
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.submitButton:hover {
+    background: linear-gradient(135deg, #9b6b3b 0%, #7b5433 100%);
+    color: #fff;
+    border-color: #ffd700;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Фоновые элементы */
+.backgroundElements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.floatingSymbols {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.symbol {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: rgba(200, 169, 113, 0.1);
+    border: 1px solid rgba(139, 90, 43, 0.3);
+    border-radius: 5px;
+    animation: floatSymbol 20s infinite linear;
+}
+
+.symbol:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+.symbol:nth-child(2) { top: 20%; right: 10%; animation-delay: -3s; }
+.symbol:nth-child(3) { top: 40%; left: 15%; animation-delay: -6s; }
+.symbol:nth-child(4) { top: 60%; right: 5%; animation-delay: -9s; }
+.symbol:nth-child(5) { top: 30%; left: 25%; animation-delay: -12s; }
+.symbol:nth-child(6) { top: 70%; right: 20%; animation-delay: -15s; }
+.symbol:nth-child(7) { top: 50%; left: 8%; animation-delay: -18s; }
+.symbol:nth-child(8) { top: 80%; right: 15%; animation-delay: -21s; }
+
+@keyframes floatSymbol {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg) scale(1);
+        opacity: 0.3;
+    }
+    25% {
+        transform: translateY(-15px) rotate(90deg) scale(1.1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translateY(0) rotate(180deg) scale(1);
+        opacity: 0.7;
+    }
+    75% {
+        transform: translateY(15px) rotate(270deg) scale(0.9);
+        opacity: 0.5;
+    }
+}
+
+.magicParticles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+            radial-gradient(circle at 20% 30%, rgba(200, 169, 113, 0.05) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(139, 90, 43, 0.05) 0%, transparent 50%);
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .contentWrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .mainContent {
+        padding: 1rem;
+    }
+
+    .pageTitle {
+        font-size: 2.2rem;
+    }
+
+    .pageSubtitle {
+        font-size: 1.1rem;
+    }
+
+    .developerName {
+        font-size: 1.7rem;
+    }
+
+    .skillsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .socialLinks {
+        grid-template-columns: 1fr;
+    }
+
+    .imageFrame {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pageTitle {
+        font-size: 1.8rem;
+    }
+
+    .developerName {
+        font-size: 1.5rem;
+    }
+
+    .contactsTitle {
+        font-size: 1.5rem;
+    }
+
+    .socialLink {
+        padding: 0.8rem;
+    }
+
+    .socialIcon {
+        font-size: 1.5rem;
+        margin-right: 0.8rem;
+    }
+
+    .socialName {
+        font-size: 1rem;
+    }
+
+    .imageFrame {
+        width: 150px;
+        height: 150px;
+    }
+}
